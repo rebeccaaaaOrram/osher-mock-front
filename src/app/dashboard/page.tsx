@@ -2,6 +2,7 @@
 "use client";
 
 import Sidebar from "@/components/Sidebar";
+import Multistep from "@/components/Stepform";
 
 export default function Dashboard() {
   return (
@@ -9,7 +10,7 @@ export default function Dashboard() {
       <Sidebar
         children={
           <>
-            <h1>Dashboard</h1>
+            <Multistep />
           </>
         }
       />

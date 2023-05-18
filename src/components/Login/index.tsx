@@ -54,7 +54,9 @@ export default function Login() {
                 <Link color={"blue.400"}>Esqueci minha senha</Link>
               </Stack>
             </Stack>
-            <Button color="#fff">Entrar</Button>
+            <Button color="#fff" className="bg-slate-950">
+              <Link href="/dashboard">Entrar</Link>
+            </Button>
           </Stack>
         </Box>
       </Stack>

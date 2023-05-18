@@ -170,14 +170,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         icon={<FiMenu />}
       />
 
-      <Text
-        display={{ base: "flex", md: "none" }}
-        fontSize="2xl"
-        fontFamily="monospace"
-        fontWeight="bold"
-      >
-        Logo
-      </Text>
+      <Image src={Logo} alt="Osher Logo" />
 
       <HStack spacing={{ base: "0", md: "6" }}>
         <Flex alignItems={"center"}>

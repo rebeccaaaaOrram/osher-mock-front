@@ -155,10 +155,26 @@ const Form4 = () => {
   );
 };
 
+const Form5 = () => {
+  return (
+    <>
+      <Heading w="100%" textAlign={"start"} fontWeight="normal" mb="2%">
+        Arquivo configurado com sucesso!
+      </Heading>
+      <Box>
+        Realize o mesmo processo para os demais arquivos.
+        <br />
+        <br />
+        Empreendimento 1 - Liberado para integração
+      </Box>
+    </>
+  );
+};
+
 export default function Multistep() {
   const toast = useToast();
   const [step, setStep] = useState(1);
-  const [progress, setProgress] = useState(23.23);
+  const [progress, setProgress] = useState(13.13);
   return (
     <>
       <Box
@@ -184,8 +200,10 @@ export default function Multistep() {
           <Form2 />
         ) : step === 3 ? (
           <Form3 />
-        ) : (
+        ) : step === 4 ? (
           <Form4 />
+        ) : (
+          <Form5 />
         )}
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
@@ -194,7 +212,7 @@ export default function Multistep() {
                 className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
                 onClick={() => {
                   setStep(step - 1);
-                  setProgress(progress - 33.33);
+                  setProgress(progress - 23.33);
                 }}
                 isDisabled={step === 1}
                 colorScheme="teal"
@@ -204,41 +222,35 @@ export default function Multistep() {
               >
                 Voltar
               </Button>
-              <Button
-                w="7rem"
-                isDisabled={step === 4}
-                onClick={() => {
-                  setStep(step + 1);
-                  if (step === 4) {
-                    setProgress(100);
-                  } else {
-                    setProgress(progress + 33.33);
-                  }
-                }}
-                colorScheme="teal"
-                variant="outline"
-              >
-                Próximo
-              </Button>
+              {step === 5 ? (
+                <Button
+                  w="100%"
+                  onClick={() => {
+                    setStep(step - 3);
+                  }}
+                  colorScheme="teal"
+                  variant="outline"
+                >
+                  Selecionar empreendimento
+                </Button>
+              ) : (
+                <Button
+                  w="7rem"
+                  onClick={() => {
+                    setStep(step + 1);
+                    if (step === 5) {
+                      setProgress(100);
+                    } else {
+                      setProgress(progress + 23.33);
+                    }
+                  }}
+                  colorScheme="teal"
+                  variant="outline"
+                >
+                  Próximo
+                </Button>
+              )}
             </Flex>
-            {step === 3 ? (
-              <Button
-                w="7rem"
-                colorScheme="red"
-                variant="solid"
-                onClick={() => {
-                  toast({
-                    title: "Account created.",
-                    description: "We've created your account for you.",
-                    status: "success",
-                    duration: 3000,
-                    isClosable: true,
-                  });
-                }}
-              >
-                Salvar
-              </Button>
-            ) : null}
           </Flex>
         </ButtonGroup>
       </Box>
